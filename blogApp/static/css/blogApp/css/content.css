@@ -1,0 +1,28 @@
+#content-wrapper {
+    display: table-row;
+}
+
+#content {
+    display: table-cell;
+    position: relative;
+    height: 100%;
+    z-index: 1;
+    vertical-align: top;
+}
+
+.section {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    z-index: 1;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.section-header {
+    background: #2c3035;
+    height: auto;
+    color: #fff;
+    min-height: 300px;
+}

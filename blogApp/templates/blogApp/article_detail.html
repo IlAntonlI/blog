@@ -1,0 +1,38 @@
+{% block content %}
+<div class="section section-header">
+    <div class="inner">
+        <div class="grid">
+            <h1>{{ article.headline }}</h1>
+            <p>{{ article.pub_date }}</p>
+            <a href="{% url 'blogApp:article-list' %}" class="btn btn-post">Other posts</a>
+        </div>
+    </div>
+</div>
+<div class="text">
+    <div class="grid">
+        <p>{{ article.full_text }}</p>
+    </div>
+</div>
+<div class="comments-block">
+    <div class="grid">
+        <div class="comment-name">
+            <h3 class="block-name">Comments</h3>
+        </div>
+        <form action="#" method="post" class="comment-form">
+            {% csrf_token %}
+            <div class="comment-form">
+                <div class="field field-name">
+                    {{ comment_form.name }}
+                </div>
+                <div class="field field-email">
+                    {{ comment_form.email }}
+                </div>
+                <div class="field field-text">
+                    {{ comment_form.text }}
+                </div>
+                <button type="submit" class="btn arrow-btn"><span>Send</span></button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'blogApp/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% for article in object_list %}
+        <article class="post-block">
+            <div class="grid">
+                {% if article.image %}
+                    <img src="{{ article.image.url }}" width="930" height="500" alt="Article image">
+                {% else %}
+                    <img src="#" alt="Article image">
+                {% endif %}
+                <p>{{ article.pub_date }}</p>
+                <p>{{ article.headline }}</p>
+                <p>{{ article.short_text }}</p>
+                <a href="{% url 'blog:article-detail' article.slug %}" class="btn arrow-btn"><span>Read more</span></a>
+            </div>
+        </article>
+    {% endfor %}
+    <div id="paginator">
+        <div class="grid">
+            {% if is_paginated %}
+
+                {% if page_obj.has_previous %}
+                    <a class="btn btn-outline-info" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <a class="btn btn-info" href="?page={{ num }}">{{ num }}</a>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <a class="btn btn-outline-info" href="?page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <a class="btn btn-outline-info" href="?page={{ page_obj.next_page_number }}">Next</a>
+                {% endif %}
+
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

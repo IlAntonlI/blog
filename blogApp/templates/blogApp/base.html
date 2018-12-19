@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blogApp/css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blogApp/css/header.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blogApp/css/content.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blogApp/css/article_list.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blogApp/css/footer.css' %}" />
+    <title>Title</title>
+</head>
+<body>
+<div id="wrapper">
+    <div id="header-wrapper">
+        <div id="header-cell">
+            <header>
+                <div class="menu-box">Header</div>
+            </header>
+        </div>
+    </div>
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="section section-header">
+                <div id="popular" class="block named-block">
+                    <div class="block">
+                        <div class="title">Title content</div>
+                        <div class="posts"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="posts">
+                {% block content %}
+                    {% include 'blogApp/article_list.html' %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <div id="footer-wrapper">
+        <div id="footer-cell">
+            <footer class="block">
+                <div class="grid-block">Footer</div>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>
